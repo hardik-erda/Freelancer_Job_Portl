@@ -42,27 +42,34 @@
             android:exported="false" />
         <activity
             android:name=".RegisterProfilePage"
-            android:exported="false" />
-        <activity
-            android:name=".RoleSelectionPage"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterPage"
-            android:exported="false" />
-        <activity
-            android:name=".LoginPage"
-            android:exported="false" />
-        <activity
-            android:name=".SplashScreen"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".RoleSelectionPage"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".RegisterPage"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPage"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false">
+
         </activity>
     </application>
 
