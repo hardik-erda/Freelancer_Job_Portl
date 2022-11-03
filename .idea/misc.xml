@@ -3,7 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/btn_round.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/ic__564534_customer_man_user_account_profile_icon.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/ic_camera.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/ic_outline_photo_camera_24.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/ic_pass_key.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/round_corner.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/rounded_cardview.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/drawable/sq_img.xml" value="0.1565" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_feedback_page.xml" value="0.25" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_login_page.xml" value="0.2345679012345679" />
         <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_profile_verification_page.xml" value="0.2359375" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_register_page.xml" value="0.20521590423257802" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_register_profile_page.xml" value="0.2" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_role_selection_page.xml" value="0.176" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Android_proj/FreelancerJobPortlTSEE/app/src/main/res/mipmap-anydpi-v26/ic_password.xml" value="0.1565" />
       </map>
     </option>
   </component>

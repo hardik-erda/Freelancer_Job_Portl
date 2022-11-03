@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "30184778717",
+    "project_id": "freelancer-job-portl-tsee",
+    "storage_bucket": "freelancer-job-portl-tsee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30184778717:android:15af4e1d0998bc22ce2434",
+        "android_client_info": {
+          "package_name": "com.example.freelancerjobportltsee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30184778717-gfb646ia24g9rr67ici9ndhkgk1hm6bq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGeu7y-q6RVRYVPGulGNtpg7sjiLsC6vA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30184778717-gfb646ia24g9rr67ici9ndhkgk1hm6bq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
