@@ -1,3 +1,17 @@
+
 <resources>
     <string name="app_name">Freelancer Job Portl(TSEE)</string>
+
+
+    <string-array name="categories">
+        <item>Android Development</item>
+        <item>Website Development</item>
+        <item>Video Editing</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item>English</item>
+        <item>Gujarati</item>
+        <item>Hindi</item>
+    </string-array>
 </resources>
