@@ -16,12 +16,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterPage extends AppCompatActivity {
 
     EditText edt_user,edt_password,edt_repassword,edt_fname,edt_lname,edt_mobile;
     Button btn_reg;
     private FirebaseAuth mAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    ResgisterInfo registerinfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +44,15 @@ public class RegisterPage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        // instance of our Firebase database.
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        // below line is used to get reference for our database.
+        databaseReference = firebaseDatabase.getReference("ResgisterInfo");
+        // initializing our object
+        // class variable.
+        registerinfo = new ResgisterInfo();
+
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +65,7 @@ public class RegisterPage extends AppCompatActivity {
 
 
 
-        // Take the value of two edit texts in Strings
+        // Take the value of edit texts in Strings
         String email, password,repassword,mobile,fname,lname;
         email = edt_user.getText().toString();
         password = edt_password.getText().toString();
@@ -56,6 +73,7 @@ public class RegisterPage extends AppCompatActivity {
         lname = edt_lname.getText().toString();
         repassword = edt_repassword.getText().toString();
         mobile = edt_mobile.getText().toString();
+
 
         // Validations for input email and password
         if (TextUtils.isEmpty(fname)) {
@@ -130,8 +148,7 @@ public class RegisterPage extends AppCompatActivity {
                                             Toast.LENGTH_LONG)
                                     .show();
 
-
-
+                            addDatatoFirebase(fname,lname,email,mobile,mAuth.getUid().toString());
                             // if the user created intent to login activity
                             Intent intent
                                     = new Intent(RegisterPage.this,
@@ -154,5 +171,38 @@ public class RegisterPage extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    private void addDatatoFirebase(String fname, String lname, String email,String mobile,String uid) {
+        // below 3 lines of code is used to set
+        // data in our object class.
+        registerinfo.setFname(fname);
+        registerinfo.setLname(lname);
+        registerinfo.setEmail(email);
+        registerinfo.setMobile(mobile);
+
+
+
+
+        // we are use add value event listener method
+        // which is called with database reference.
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // inside the method of on Data change we are setting
+                // our object class to our database reference.
+                // data base reference will sends data to firebase.
+                databaseReference.child(uid).setValue(registerinfo);
+
+                // after adding this data we are showing toast message.
+                Toast.makeText(RegisterPage.this, "data added", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // if the data is not added or it is cancelled then
+                // we are displaying a failure toast message.
+                Toast.makeText(RegisterPage.this, "Fail to add data " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -17,25 +17,41 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     EditText edt_user,edt_password;
     ProgressBar progressbar;
     TextView tv_reg;
     Button btn_login;
+    String Role,DB_role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+
         TextView tv_forget = findViewById(R.id.tv_forget);
+
+        //get the role from roleSelection page and store it in String variable
+        Intent i = getIntent();
+        Role=i.getStringExtra("Role");
+
+        //Click event for forget password textView
         tv_forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginPage.this, "forget", Toast.LENGTH_SHORT).show();
             }
         });
+
         //firebase auth added
         mAuth = FirebaseAuth.getInstance();
         //initialising username and password
@@ -56,6 +72,7 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(LoginPage.this,RegisterPage.class);
+                i.putExtra("Role",Role);
                 startActivity(i);
             }
         });
@@ -107,6 +124,12 @@ public class LoginPage extends AppCompatActivity {
                                     // hide the progress bar
                                     progressbar.setVisibility(View.GONE);
 
+                                    //method to retrive role from Database
+                                    getDbRole(mAuth.getUid());
+
+                                    if(DB_role.equals("Freelancer")){
+                                        Intent i = new Intent();
+                                    }
                                     // if sign-in is successful
                                     // intent to home activity
                                     Intent intent
@@ -131,5 +154,22 @@ public class LoginPage extends AppCompatActivity {
                                 }
                             }
                         });
+    }
+
+    //
+    private void getDbRole(String uid) {
+        databaseReference.child("ResgisterInfo").child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    DB_role = snapshot.child("Nama").getValue().toString();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                throw error.toException();
+            }
+        });
     }
 }
